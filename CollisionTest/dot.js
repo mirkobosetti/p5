@@ -32,6 +32,7 @@ class Dot {
 				})
 				if (!canMoveX) break
 			}
+			//if (canMoveX) this.x += speedX < mouseX - this.x ? speedX : mouseX - this.x
 			if (canMoveX) this.x += speedX
 		}
 
@@ -51,7 +52,7 @@ class Dot {
 		if (this.y < mouseY) {
 			const dotsInTheWay = dots.filter(d => d.y + d.diameter > this.y)
 			let canMoveY = true
-			for (let i = 0; i < dotsInTheWay.length - 1; i++) {
+			for (let i = 0; i < dotsInTheWay.length; i++) {
 				canMoveY = !this.collide({
 					x: dotsInTheWay[i].x,
 					y: dotsInTheWay[i].y - speedY,
@@ -64,7 +65,7 @@ class Dot {
 		if (this.y > mouseY) {
 			const dotsInTheWay = dots.filter(d => d.y - d.diameter < this.y)
 			let canMoveY = true
-			for (let i = 0; i < dotsInTheWay.length - 1; i++) {
+			for (let i = 0; i < dotsInTheWay.length; i++) {
 				canMoveY = !this.collide({
 					x: dotsInTheWay[i].x,
 					y: dotsInTheWay[i].y + speedY,
