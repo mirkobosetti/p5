@@ -1,8 +1,8 @@
 const WIDTH = 800 //window.innerWidth
 const HEIGHT = 500 //window.innerHeight
 
-const DOTS_NUMBER = 20
-const DOTS_SIZE = 9
+const DOTS_NUMBER = 200
+const DOTS_SIZE = 3
 const DOTS_SPEED = 5
 var dots = []
 
