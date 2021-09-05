@@ -17,13 +17,20 @@ function setup() {
 
 function draw() {
 	background(0)
-
 	stroke(255)
+
+	let idsToUpdate = dots.map(m => m.id)
+
 	for (let i = 0; i < DOTS_NUMBER; i++) {
 		if (!mouseX) return
+		
+		let idToUpdate = idsToUpdate[Math.floor(Math.random() * idsToUpdate.length)]
 
-		dots[i].update(dots.filter(f => f.id != dots[i].id))
+		console.log(idToUpdate)
+		dots[idToUpdate].update(dots.filter(f => f.id != dots[idToUpdate].id))
 
-		circle(dots[i].x, dots[i].y, dots[i].diameter)
+		circle(dots[idToUpdate].x, dots[idToUpdate].y, dots[idToUpdate].diameter)
+
+		idsToUpdate = idsToUpdate.filter(f => f != idToUpdate)
 	}
 }
