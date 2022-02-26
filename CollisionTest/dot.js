@@ -1,10 +1,11 @@
 class Dot {
-	constructor(id, x, y, diameter = 20, speed = 2) {
+	constructor(id, x, y, diameter = 20, speed = 2, color) {
 		this.id = id
 		this.x = x
 		this.y = y
 		this.diameter = diameter
 		this.speed = speed
+		this.color = color
 	}
 
 	update = dots => {
