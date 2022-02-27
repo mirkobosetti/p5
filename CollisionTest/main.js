@@ -22,7 +22,7 @@ function draw() {
 
 	let idsToUpdate = dots.map(m => m.id)
 
-	for (let i = 0; i < DOTS_NUMBER; i++) {
+	for (let i = 0; i < dots.length; i++) {
 		if (!mouseX) return
 		
 		let idToUpdate = idsToUpdate[Math.floor(Math.random() * idsToUpdate.length)]
@@ -37,4 +37,10 @@ function draw() {
 
 		idsToUpdate = idsToUpdate.filter(f => f != idToUpdate)
 	}
+}
+
+function mouseClicked() {
+	const x = int(random() * WIDTH)
+	const y = int(random() * HEIGHT)
+	dots.push(new Dot(dots.length, x, y, DOTS_SIZE, DOTS_SPEED, Math.random()*360))
 }

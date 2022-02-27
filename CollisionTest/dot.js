@@ -20,61 +20,120 @@ class Dot {
 		const speedX = a * speedCoef
 		const speedY = b * speedCoef
 
-		if (this.x < mouseX) {
-			//prendo tutti i dots che sono alla destra (e alla sinistra del mouse) e che hanno una y simile alla mia /*&& d.x < mouseX*/
-			const dotsInTheWay = dots.filter(d => d.x + d.diameter > this.x)
-			//.filter(dot => dot.y + this.diameter < this.y + this.diameter)
-			//.filter(dot => dot.y - this.diameter < this.y - this.diameter)
-			let canMoveX = true
-			for (let i = 0; i < dotsInTheWay.length; i++) {
-				canMoveX = !this.collide({
-					x: dotsInTheWay[i].x - speedX,
-					y: dotsInTheWay[i].y,
-				})
-				if (!canMoveX) break
+
+		if (Math.random() > 0.5) {
+			if (this.x < mouseX) {
+				//prendo tutti i dots che sono alla destra (e alla sinistra del mouse) e che hanno una y simile alla mia /*&& d.x < mouseX*/
+				const dotsInTheWay = dots.filter(d => d.x + d.diameter > this.x)
+				//.filter(dot => dot.y + this.diameter < this.y + this.diameter)
+				//.filter(dot => dot.y - this.diameter < this.y - this.diameter)
+				let canMoveX = true
+				for (let i = 0; i < dotsInTheWay.length; i++) {
+					canMoveX = !this.collide({
+						x: dotsInTheWay[i].x - speedX,
+						y: dotsInTheWay[i].y,
+					})
+					if (!canMoveX) break
+				}
+				//if (canMoveX) this.x += speedX < mouseX - this.x ? speedX : mouseX - this.x
+				if (canMoveX) this.x += speedX
 			}
-			//if (canMoveX) this.x += speedX < mouseX - this.x ? speedX : mouseX - this.x
-			if (canMoveX) this.x += speedX
+			if (this.x > mouseX) {
+				const dotsInTheWay = dots.filter(d => d.x - d.diameter < this.x)
+				let canMoveX = true
+				for (let i = 0; i < dotsInTheWay.length; i++) {
+					canMoveX = !this.collide({
+						x: dotsInTheWay[i].x + speedX,
+						y: dotsInTheWay[i].y,
+					})
+					if (!canMoveX) break
+				}
+				if (canMoveX) this.x -= speedX
+			}
+		} else {
+			if (this.x > mouseX) {
+				const dotsInTheWay = dots.filter(d => d.x - d.diameter < this.x)
+				let canMoveX = true
+				for (let i = 0; i < dotsInTheWay.length; i++) {
+					canMoveX = !this.collide({
+						x: dotsInTheWay[i].x + speedX,
+						y: dotsInTheWay[i].y,
+					})
+					if (!canMoveX) break
+				}
+				if (canMoveX) this.x -= speedX
+			}
+			if (this.x < mouseX) {
+				//prendo tutti i dots che sono alla destra (e alla sinistra del mouse) e che hanno una y simile alla mia /*&& d.x < mouseX*/
+				const dotsInTheWay = dots.filter(d => d.x + d.diameter > this.x)
+				//.filter(dot => dot.y + this.diameter < this.y + this.diameter)
+				//.filter(dot => dot.y - this.diameter < this.y - this.diameter)
+				let canMoveX = true
+				for (let i = 0; i < dotsInTheWay.length; i++) {
+					canMoveX = !this.collide({
+						x: dotsInTheWay[i].x - speedX,
+						y: dotsInTheWay[i].y,
+					})
+					if (!canMoveX) break
+				}
+				//if (canMoveX) this.x += speedX < mouseX - this.x ? speedX : mouseX - this.x
+				if (canMoveX) this.x += speedX
+			}
 		}
 
-		if (this.x > mouseX) {
-			const dotsInTheWay = dots.filter(d => d.x - d.diameter < this.x)
-			let canMoveX = true
-			for (let i = 0; i < dotsInTheWay.length; i++) {
-				canMoveX = !this.collide({
-					x: dotsInTheWay[i].x + speedX,
-					y: dotsInTheWay[i].y,
-				})
-				if (!canMoveX) break
+		if (Math.random() > 0.5) {
+			if (this.y < mouseY) {
+				const dotsInTheWay = dots.filter(d => d.y + d.diameter > this.y)
+				let canMoveY = true
+				for (let i = 0; i < dotsInTheWay.length; i++) {
+					canMoveY = !this.collide({
+						x: dotsInTheWay[i].x,
+						y: dotsInTheWay[i].y - speedY,
+					})
+					if (!canMoveY) break
+				}
+				if (canMoveY) this.y += speedY
 			}
-			if (canMoveX) this.x -= speedX
+			if (this.y > mouseY) {
+				const dotsInTheWay = dots.filter(d => d.y - d.diameter < this.y)
+				let canMoveY = true
+				for (let i = 0; i < dotsInTheWay.length; i++) {
+					canMoveY = !this.collide({
+						x: dotsInTheWay[i].x,
+						y: dotsInTheWay[i].y + speedY,
+					})
+					if (!canMoveY) break
+				}
+				if (canMoveY) this.y -= speedY
+			}
+		} else {
+			if (this.y > mouseY) {
+				const dotsInTheWay = dots.filter(d => d.y - d.diameter < this.y)
+				let canMoveY = true
+				for (let i = 0; i < dotsInTheWay.length; i++) {
+					canMoveY = !this.collide({
+						x: dotsInTheWay[i].x,
+						y: dotsInTheWay[i].y + speedY,
+					})
+					if (!canMoveY) break
+				}
+				if (canMoveY) this.y -= speedY
+			}
+			if (this.y < mouseY) {
+				const dotsInTheWay = dots.filter(d => d.y + d.diameter > this.y)
+				let canMoveY = true
+				for (let i = 0; i < dotsInTheWay.length; i++) {
+					canMoveY = !this.collide({
+						x: dotsInTheWay[i].x,
+						y: dotsInTheWay[i].y - speedY,
+					})
+					if (!canMoveY) break
+				}
+				if (canMoveY) this.y += speedY
+			}
 		}
 
-		if (this.y < mouseY) {
-			const dotsInTheWay = dots.filter(d => d.y + d.diameter > this.y)
-			let canMoveY = true
-			for (let i = 0; i < dotsInTheWay.length; i++) {
-				canMoveY = !this.collide({
-					x: dotsInTheWay[i].x,
-					y: dotsInTheWay[i].y - speedY,
-				})
-				if (!canMoveY) break
-			}
-			if (canMoveY) this.y += speedY
-		}
-
-		if (this.y > mouseY) {
-			const dotsInTheWay = dots.filter(d => d.y - d.diameter < this.y)
-			let canMoveY = true
-			for (let i = 0; i < dotsInTheWay.length; i++) {
-				canMoveY = !this.collide({
-					x: dotsInTheWay[i].x,
-					y: dotsInTheWay[i].y + speedY,
-				})
-				if (!canMoveY) break
-			}
-			if (canMoveY) this.y -= speedY
-		}
+		
 	}
 
 	/**
