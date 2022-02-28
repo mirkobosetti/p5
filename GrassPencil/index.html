@@ -11,6 +11,30 @@
 		<script src="script.js" defer></script>
 	</head>
 	<body>
-		<canvas id="canvas"></canvas>
+		<div class="page">
+			<div class="filters">
+				<label for="color">
+					Colore
+					<input type="color" name="color" id="color" onchange="changeColor(this)">
+				</label>
+
+				<label for="candeggina">
+					Candeggina
+					<input type="checkbox" name="candeggina" id="candeggina" onchange="toggleCandeggina(this)" checked>
+				</label>
+
+				<label for="formaldeide">
+					Forma
+					<select name="formaldeide" id="formaldeide" onchange="changeShape(this)">
+						<option value="0">Triangolo</option>
+						<option value="1">Quadrato</option>
+						<option value="2">Pentagono</option>
+						<option value="3" selected>Cerchio</option>
+					</select>
+				</label>
+
+			</div>
+			<canvas id="canvas"></canvas>
+		</div>
 	</body>
 </html>
